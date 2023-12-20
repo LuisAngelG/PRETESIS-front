@@ -1,0 +1,129 @@
+ <!-- Header-->
+ <nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <div id="mobile-menu" *ngIf="isLoggedIn">
+                <div class="left-nav-toggle">
+                    <a routerLink="/user">
+                        <i class="stroke-hamburgermenu" routerLink="/user"></i>
+                    </a>
+                </div>
+            </div>
+
+            <div id="mobile-menu" *ngIf="!isLoggedIn">
+                <div class="left-nav-toggle">
+                    <a routerLink="/home">
+                        <i class="stroke-hamburgermenu" routerLink="/home"></i>
+                    </a>
+                </div>
+            </div>
+            <a class="navbar-brand">
+                Tecsup
+            </a>
+        </div>
+        <!-- Si ha generado un login correcto -->
+        <div id="navbar" class="navbar-collapse collapse" *ngIf="isLoggedIn">
+            <ul class="nav navbar-nav navbar-right">
+                <li class=" profil-link">
+                    <a (click)="logout()">
+                        <span class="profile-address">{{ currentUser.username }}</span>
+                        <img src="assets/images/profile.jpg" class="img-circle" alt="">
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+        <!-- Si NO ha generado un login correcto -->
+        <div id="navbar" class="navbar-collapse collapse" *ngIf="!isLoggedIn">
+            <div class="left-nav-toggle">
+                <a class="nav-link">
+                    <i class="stroke-hamburgermenu" routerLink="/home"></i>
+                </a>
+            </div>
+            <ul class="nav navbar-nav navbar-right">
+                <li class=" register-link">
+                    <a routerLink="/register">
+                        <span class="register-address">Sign Up</span>
+                    </a>
+                </li>
+            </ul>
+
+            <ul class="nav navbar-nav navbar-right">
+                <li class=" login-link">
+                    <a routerLink="/login">
+                        <span class="login-address">Sign In</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<ng-template #loggedOut>
+    Please Login
+</ng-template>
+<!-- End header-->
+
+<!-- Navigation-->
+<aside class="navigation" *ngIf="!isLoggedIn">
+    <nav>
+        <ul class="nav luna-nav">
+            <li>
+                <a href="/tiendas">Locales</a>
+            </li>
+            <li>
+                <a href="/listar-productos">Productos</a>
+            </li>
+
+            <li class="active">
+                <a href="#monitoring" data-toggle="collapse" aria-expanded="true">
+                    Monitoring<span class="sub-nav-icon"> <i class="stroke-arrow"></i> </span>
+                </a>
+                <ul id="monitoring" class="nav nav-second collapse in">
+                    <li class="active"><a href="metrics.html"> Metrics</a></li>
+                    <li><a href="usage.html"> Usage</a></li>
+                    <li><a href="activity.html"> Activity</a></li>
+                </ul>
+            </li>
+            <li class="nav-info">
+                <i class="pe pe-7s-shield text-accent"></i>
+                <div class="m-t-xs">
+                    <span class="c-white">GymColumbus</span> 
+                     
+                </div>
+            </li>
+        </ul>
+    </nav>
+</aside>
+
+<aside class="navigation" *ngIf="isLoggedIn">
+    <nav>
+        <ul class="nav luna-nav">
+            <li>
+                <a href="/tiendas">Locales</a>
+            </li>
+            <li>
+                <a href="/listar-productos">Productos</a>
+            </li>
+
+            <li class="active">
+                <a href="#monitoring" data-toggle="collapse" aria-expanded="true">
+                    Monitoring<span class="sub-nav-icon"> <i class="stroke-arrow"></i> </span>
+                </a>
+                <ul id="monitoring" class="nav nav-second collapse in">
+                    <li class="active"><a href="metrics.html"> Metrics</a></li>
+                    <li><a href="usage.html"> Usage</a></li>
+                    <li><a href="activity.html"> Activity</a></li>
+                </ul>
+            </li>
+            <li class="nav-info">
+                <i class="pe pe-7s-shield text-accent"></i>
+                <div class="m-t-xs">
+                    <span class="c-white">GymColumbus</span> 
+                     
+                </div>
+            </li>
+        </ul>
+    </nav>
+</aside>
+<!-- End navigation-->

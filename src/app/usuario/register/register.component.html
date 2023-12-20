@@ -1,0 +1,141 @@
+<!-- <div class="col-md-12">
+
+    <div class="card card-container">
+
+        <img
+            id="profile-img"
+            src="//ssl.gstatic.com/accounts/ui/avatar_2x.png"
+            class="profile-img-card"
+        />
+
+        <form *ngIf="!isSuccessful" name="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate>
+           
+            <div class="form-group">
+                <label for="username">Username</label>
+                <input 
+                type="text" 
+                class="form-control" 
+                name="username" 
+                [(ngModel)]="registrarUsuario.username" 
+                required 
+                minlength="3" 
+                maxlength="30" 
+                #username="ngModel" 
+                [ngClass]="{ 'is-invalid': f.submitted && username.errors}"
+                />
+                <div class="invalid-feedback" *ngIf="username.errors && f.submitted">
+                    <div *ngIf="username.errors['required']">Username is required</div>
+                    <div *ngIf="username.errors['minlength']">Username must be at least 3 characters</div>
+                    <div *ngIf="username.errors['maxlength']">Username must be at most 3 characters</div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input 
+                type="email" 
+                class="form-control" 
+                name="email" 
+                [(ngModel)]="registrarUsuario.email" 
+                required 
+                email
+                #email="ngModel" 
+                [ngClass]="{ 'is-invalid': f.submitted && email.errors}"
+                />
+                <div class="invalid-feedback" *ngIf="email.errors && f.submitted">
+                    <div *ngIf="email.errors['required']">Username is required</div>
+                    <div *ngIf="email.errors['email']">Email must be a valid email</div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input 
+                type="password" 
+                class="form-control" 
+                name="password" 
+                [(ngModel)]="registrarUsuario.password" 
+                required 
+                minlength="6"
+                #password="ngModel" 
+                [ngClass]="{ 'is-invalid': f.submitted && password.errors}"
+                />
+                <div class="invalid-feedback" *ngIf="password.errors && f.submitted">
+                    <div *ngIf="password.errors['required']">Password is required</div>
+                    <div *ngIf="password.errors['minlength']">Password must be at least 6 characters</div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <button class="btn btn-primary btn-block">Sign Up</button>
+            </div>
+            <div class="alert alert-warning" *ngIf="f.submitted && isSignUpFailed">
+                Signup failed!
+                <br/> 
+                {{errorMessage}}
+            </div>
+            
+        </form>
+
+        <div class="alert alert-success" *ngIf="isSuccessful">
+            Your registration is successful
+        </div>
+
+    </div>
+</div> -->
+
+    <!-- Main content-->
+    <section class="content">
+        <div class="container-center lg animated slideInDown">
+        <div class="view-header">
+                <div class="header-icon">
+                    <i class="pe page-header-icon pe-7s-add-user"></i>
+                </div>
+                <div class="header-title">
+                    <h3>Registro de Usuario</h3>
+                    <small>
+                        Por favor ingrese sus datos para su registro.
+                    </small>
+                </div>
+            </div>
+
+            <div class="panel panel-filled">
+                <div class="panel-body">
+                    <p>
+
+                    </p>
+                    <form *ngIf="!isSuccessful" [formGroup]="registrarUsuario" (ngSubmit)="onSubmit()">
+                        <div class="row">
+                            <div class="form-group col-lg-6">
+                                <label>Username</label>
+                                <input type="text" value="" formControlName="username" class="form-control" name="">
+                                <span class="help-block small">Ingrese su usuario</span>
+                            </div>
+                            <div class="form-group col-lg-6">
+                                <label>Password</label>
+                                <input type="password" value="" formControlName="password" class="form-control" name="">
+                                <span class="help-block small">Ingrese su contraseña</span>
+                            </div>
+                            <div class="form-group col-lg-6">
+                                <label>Repeat Password</label>
+                                <input type="password" value="" formControlName="repeatpassword" class="form-control" name="">
+                                <span class="help-block small">Por favor re´pita su contraseña</span>
+                            </div>
+                            <div class="form-group col-lg-6">
+                                <label>Email Address</label>
+                                <input type="email" value="" formControlName="email" class="form-control" name="">
+                                <span class="help-block small">Ingrese su correo de contacto</span>
+                            </div>
+                        </div>
+                        <div>
+                            <button class="btn btn-accent">Guardar</button>
+                            <a class="btn btn-default" routerLink="/login">Regresar</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+        </div>
+    </section>
+    <!-- End main content-->
+

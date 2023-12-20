@@ -1,0 +1,129 @@
+<!-- <div class="col-md-12">
+    <div class="card card-container">
+        <img
+            id="profile-img"
+            src="//ssl.gstatic.com/accounts/ui/avatar_2x.png"
+            class="profile-img-card"
+        />
+
+        <form
+            *ngIf="!isLoggedIn"
+            name="form"
+            (ngSubmit)="f.form.valid && onSubmit()"
+            #f="ngForm"
+            novalidate
+        >
+
+        <div class="form-group">
+            <label for="email">Email</label>
+            <input
+                type="email"
+                class="form-control"
+                name="email"
+                [(ngModel)]="form.email"
+                required
+                #email="ngModel"
+                [ngClass]="{ 'is-invalid': f.submitted && email.errors}"
+            />
+            <div *ngIf="email.errors && f.submitted" class="invalid-feedback">Email is required!</div>
+        </div>
+
+        <div class="form-group">
+            <label for="password">Password</label>
+            <input
+            type="password"
+            class="form-control"
+            name="password"
+            [(ngModel)]="form.password"
+            required
+            minlength="6"
+            #password="ngModel"
+            [ngClass]="{ 'is-invalid': f.submitted && password.errors}"
+            />
+            <div *ngIf="password.errors && f.submitted" class="invalid-feedback">
+                <div *ngIf="password.errors['required']">Password is required</div>
+                <div *ngIf="password.errors['minlength']">Password must be at least 6 characters</div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <button class="btn btn-primary btn-block">Login</button>
+        </div>
+        <div class="form-group">
+            <div *ngIf="f.submitted && isLoginFailed" class="alert alert-danger" role="alert">
+                Login failed:{{errorMessage}}
+            </div>
+        </div>
+
+        </form>
+
+        <div class="alert alert-success" *ngIf="isLoggedIn">
+            Logged in as {{roles}}
+        </div>
+
+    </div>
+</div> -->
+
+
+<!-- Main content-->
+<section class="content">
+    <div class="container-center animated slideInDown">
+        <div class="view-header">
+            <div class="header-icon">
+                <i class="pe page-header-icon pe-7s-unlock"></i>
+            </div>
+            <div class="header-title">
+                <h3>Login</h3>
+                <small>
+                    Por favor ingrese sus credenciales para ingresar.
+                </small>
+            </div>
+        </div>
+
+        <div class="panel panel-filled">
+            <div class="panel-body">
+                <form [formGroup]="loginForm" *ngIf="!isLoggedIn" (ngSubmit)="onSubmit()">
+                    <div class="form-group">
+                        <label class="control-label">Email</label>
+                        <input type="email" formControlName="email" placeholder="example@gmail.com" title="Please enter you email" class="form-control">
+                        <div *ngIf="loginForm.get('email')?.hasError('required') 
+                                && loginForm.get('email')?.touched; else validUser">
+                            <div class="text-danger">
+                                <span>El email <strong>es obligatorio</strong></span>
+                            </div>
+                        </div>
+                        <ng-template #validUser>
+                            <div>
+                                <span class="help-block small">Ingrese su correo</span>
+                            </div>
+                        </ng-template>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label">Password</label>
+                        <input type="password" formControlName="password" minlength="6" title="Please enter your password" placeholder="******" class="form-control">
+                        <div *ngIf="loginForm.get('password')?.hasError('required') 
+                                && loginForm.get('password')?.touched; else validPassword">
+                            <div class="text-danger">
+                                <span>El password <strong>es obligatorio</strong></span>
+                            </div>
+                        </div>
+                        <ng-template #validPassword>
+                            <div>
+                                <span class="help-block small">Ingrese su password</span>
+                            </div>
+                        </ng-template>
+                    </div>
+                    <div>
+                        <button class="btn btn-accent">Login</button>
+                        <a class="btn btn-default" routerLink="/register">Nuevo Usuario</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+    </div>
+</section>
+<!-- End main content-->
+
+
+
